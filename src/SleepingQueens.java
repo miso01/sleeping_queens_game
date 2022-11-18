@@ -6,10 +6,11 @@ public class SleepingQueens {
 
     Optional<Queen> wakeQueen(int position){
         //TODO impl
+        return Optional.empty();
     }
 
     void makeAsleep(Queen queen){
-
+        //TODO impl
     }
 
 
