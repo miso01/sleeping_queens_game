@@ -14,5 +14,6 @@ public class Main {
             numOfPlayers = scanner.nextInt();
         }
         Game game = new Game(numOfPlayers);
+
     }
 }
