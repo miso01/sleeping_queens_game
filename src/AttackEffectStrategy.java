@@ -1,3 +1,5 @@
-public interface AttackEffectStrategy {
+public interface AttackEffectStrategy{
+
+    void findPlaceForQueen(Queen targetQueen);
 
 }

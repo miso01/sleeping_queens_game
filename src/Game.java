@@ -4,6 +4,7 @@ import java.util.Random;
 
 public class Game {
 
+    private GameState gameState;
     private DrawAndDiscardPile piles;
     private SleepingQueens sleepingQueens;
     private List<Player> players;
