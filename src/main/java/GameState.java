@@ -5,13 +5,13 @@ import java.util.Set;
 
 public class GameState {
     private final int numberOfPlayers;
-    private int onTurn;
-    private final Set<SleepingQueens> sleepingQueens;
-    private Map<HandPosition, Optional<Card>> cards;
-    private Map<AwokenQueenPosition, Queen> awokenQueens;
-    private List<Card> cardsDiscardedLastTurn;
+    private final int onTurn;
+    private final Set<SleepingQueenPosition> sleepingQueens;
+    private final Map<HandPosition, Optional<Card>> cards;
+    private final Map<AwokenQueenPosition, Queen> awokenQueens;
+    private final List<Card> cardsDiscardedLastTurn;
 
-    public GameState(int numberOfPlayers, int onTurn, Set<SleepingQueens> sleepingQueens, Map<HandPosition, Optional<Card>> cards, Map<AwokenQueenPosition, Queen> awokenQueens, List<Card> cardsDiscardedLastTurn) {
+    public GameState(int numberOfPlayers, int onTurn, Set<SleepingQueenPosition> sleepingQueens, Map<HandPosition, Optional<Card>> cards, Map<AwokenQueenPosition, Queen> awokenQueens, List<Card> cardsDiscardedLastTurn) {
         this.numberOfPlayers = numberOfPlayers;
         this.onTurn = onTurn;
         this.sleepingQueens = sleepingQueens;
@@ -20,9 +20,27 @@ public class GameState {
         this.cardsDiscardedLastTurn = cardsDiscardedLastTurn;
     }
 
-    public void setOnTurn(int onTurn) {
-        this.onTurn = onTurn;
+    public int getNumberOfPlayers() {
+        return numberOfPlayers;
     }
 
+    public int getOnTurn() {
+        return onTurn;
+    }
 
+    public Set<SleepingQueenPosition> getSleepingQueens() {
+        return sleepingQueens;
+    }
+
+    public Map<HandPosition, Optional<Card>> getCards() {
+        return cards;
+    }
+
+    public Map<AwokenQueenPosition, Queen> getAwokenQueens() {
+        return awokenQueens;
+    }
+
+    public List<Card> getCardsDiscardedLastTurn() {
+        return cardsDiscardedLastTurn;
+    }
 }
