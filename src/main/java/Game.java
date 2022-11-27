@@ -29,9 +29,23 @@ public class Game {
         }
         piles = new DrawAndDiscardPile(cards, new ArrayList<>());
         turn = 0;
+        printHands();
+    }
+
+
+    void play(){
+
     }
 
 
 
+    void printHands(){
+        for (Player p : players) {
+                p.printCards();
+
+            //p.getPlayerState().cards
+
+        }
+    }
 
 }

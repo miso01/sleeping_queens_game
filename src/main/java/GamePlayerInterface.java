@@ -1,3 +1,3 @@
 public interface GamePlayerInterface {
-    void play(String cards);
+    void play(String command);
 }

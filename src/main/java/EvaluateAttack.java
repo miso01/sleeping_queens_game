@@ -5,4 +5,9 @@ public class EvaluateAttack implements AttackEffectStrategy {
     boolean play(Queen targetQueen, Hand targetPlayerHand){
         return false;
     }
+
+    @Override
+    public void findPlaceForQueen(Queen targetQueen) {
+
+    }
 }

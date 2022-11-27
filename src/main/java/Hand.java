@@ -7,12 +7,14 @@ public class Hand {
     private final int playerIndex;
     private final List<Card> cards;
 
+
     public Hand(int playerIndex, List<Card> cards) {
         this.playerIndex = playerIndex;
         this.cards = cards;
     }
 
     Optional<List<Card>> pickCards(List<HandPosition> positions){
+
         return Optional.empty();
     }
 
@@ -20,5 +22,11 @@ public class Hand {
         return null;
     }
 
+    private void hasCardOfType(CardType cardType){
+        // TODO impl and return type
+    }
 
+    public List<Card> getCards() {
+        return cards;
+    }
 }
