@@ -2,18 +2,31 @@ import java.util.*;
 
 public abstract class QueenCollection {
 
-    private final Map<Position, Queen> queens = new HashMap<>();
+    protected final List<Queen> queens;
 
-    protected void addQueen(Queen queen) {
-        // TODO impl we dont know how to get a position
+    protected QueenCollection(List<Queen> queens) {
+        this.queens = new ArrayList<>(queens);
     }
 
-    Optional<Queen> removeQueen(Position position){
-        return Optional.ofNullable(queens.remove(position));
+    protected QueenCollection() {
+        this.queens = new ArrayList<>();
     }
 
-    public Map<Position, Queen> getQueens(){
-        return queens;
+    public void addQueen(Queen queen) {
+        this.queens.add(queen);
     }
 
+    protected void addQueens(List<Queen> queens) {
+        this.queens.addAll(queens);
+    }
+
+    public Optional<Queen> removeQueen(Position position) {
+        try {
+            return Optional.ofNullable(queens.remove(position.getCardIndex()));
+        } catch (IndexOutOfBoundsException e) {
+            return Optional.empty();
+        }
+    }
+
+    abstract Map<? extends Position, Queen> getQueens();
 }

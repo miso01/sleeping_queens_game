@@ -1,21 +1,18 @@
-import java.util.HashSet;
-import java.util.Optional;
-import java.util.Set;
+import java.util.HashMap;
+import java.util.Map;
 
-public class SleepingQueens {
+public class SleepingQueens extends QueenCollection {
 
-    Optional<Queen> wakeQueen(int position){
-        //TODO impl
-        return Optional.empty();
+    public SleepingQueens() {
+        super(CardDeck.getAllQueens());
     }
 
-    void makeAsleep(Queen queen){
-        //TODO impl
+    @Override
+    Map<? extends Position, Queen> getQueens() {
+        Map<SleepingQueenPosition, Queen> queensMap = new HashMap<>();
+        for (int i = 0; i < queens.size(); i++) {
+            queensMap.put(new SleepingQueenPosition(i), queens.get(i));
+        }
+        return queensMap;
     }
-
-
-    Set<SleepingQueenPosition> getPositions(){
-        return new HashSet<>();
-    }
-
 }
