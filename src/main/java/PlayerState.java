@@ -1,16 +1,32 @@
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 public class PlayerState {
 
-    //private final Map<Integer, Optional<Card>> cards;
-    private final Map<Integer, Optional<AwokenQueenPosition>> awokenQueens;
+    private final int playerIndex;
+    private final Map<HandPosition, Card> cards;
+    private final Map<AwokenQueenPosition, Queen> awokenQueens;
 
-    public PlayerState(List<Card> cards, Map<Integer, Optional<AwokenQueenPosition>> awokenQueens) {
-        Map<Integer, Optional<Card>> cardMap;
-        //this.cards = cards;
+    public PlayerState(int playerIndex, List<Card> cards, Map<AwokenQueenPosition, Queen> awokenQueens) {
+        this.playerIndex = playerIndex;
         this.awokenQueens = awokenQueens;
+        this.cards = new HashMap<>();
+        for (int i = 0; i < cards.size(); i++) {
+            this.cards.put(new HandPosition(i, playerIndex), cards.get(i));
+        }
+    }
+
+    public int getPlayerIndex() {
+        return playerIndex;
+    }
+
+    public Map<HandPosition, Card> getCards() {
+        return cards;
+    }
+
+    public Map<AwokenQueenPosition, Queen> getAwokenQueens() {
+        return awokenQueens;
     }
 
 }
