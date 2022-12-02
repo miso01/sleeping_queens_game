@@ -9,6 +9,14 @@ public class Card {
         this.value = value;
     }
 
+    public CardType getType() {
+        return type;
+    }
+
+    public int getValue() {
+        return value;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
