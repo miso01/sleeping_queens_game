@@ -1,6 +1,6 @@
 import java.util.*;
 
-public abstract class QueenCollection {
+public abstract class QueenCollection<T extends Position> {
 
     protected final List<Queen> queens;
 
@@ -28,5 +28,5 @@ public abstract class QueenCollection {
         }
     }
 
-    abstract Map<? extends Position, Queen> getQueens();
+    abstract Map<T, Queen> getQueens();
 }
