@@ -1,15 +1,10 @@
-public class AwokenQueenPosition {
+public class AwokenQueenPosition extends Position {
 
-    private final int cardIndex;
     private final int playerIndex;
 
     public AwokenQueenPosition(int cardIndex, int playerIndex) {
-        this.cardIndex = cardIndex;
+        super(cardIndex);
         this.playerIndex = playerIndex;
-    }
-
-    public int getCardIndex() {
-        return cardIndex;
     }
 
     public int getPlayerIndex() {

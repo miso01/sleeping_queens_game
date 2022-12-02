@@ -1,32 +1,12 @@
-import java.util.Optional;
+abstract public class Position {
 
-public class Position {
+    private final int cardIndex;
 
-    private HandPosition handPosition;
-    private SleepingQueenPosition sleepingQueenPosition;
-    private AwokenQueenPosition awokenQueenPosition;
-
-    public Position(HandPosition handPosition) {
-        this.handPosition = handPosition;
+    Position(int cardIndex) {
+        this.cardIndex = cardIndex;
     }
 
-    public Position(SleepingQueenPosition sleepingQueenPosition) {
-        this.sleepingQueenPosition = sleepingQueenPosition;
-    }
-
-    public Position(AwokenQueenPosition awokenQueenPosition) {
-        this.awokenQueenPosition = awokenQueenPosition;
-    }
-
-    public Optional<HandPosition> getHandPosition() {
-        return Optional.of(handPosition);
-    }
-
-    public Optional<AwokenQueenPosition> getAwokenQueenPosition() {
-        return Optional.of(awokenQueenPosition);
-    }
-
-    public Optional<SleepingQueenPosition> getSleepingQueenPosition() {
-        return Optional.of(sleepingQueenPosition);
+    public int getCardIndex() {
+        return cardIndex;
     }
 }

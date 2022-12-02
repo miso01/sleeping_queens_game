@@ -1,12 +1,6 @@
-public class SleepingQueenPosition {
+public class SleepingQueenPosition extends Position {
 
-    private final int cardIndex;
-
-    public SleepingQueenPosition(int cardIndex) {
-        this.cardIndex = cardIndex;
-    }
-
-    public int getCardIndex() {
-        return cardIndex;
+    SleepingQueenPosition(int cardIndex) {
+        super(cardIndex);
     }
 }
