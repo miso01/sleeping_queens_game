@@ -1,5 +1,3 @@
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class PlayerState {
@@ -8,13 +6,10 @@ public class PlayerState {
     private final Map<HandPosition, Card> cards;
     private final Map<AwokenQueenPosition, Queen> awokenQueens;
 
-    public PlayerState(int playerIndex, List<Card> cards, Map<AwokenQueenPosition, Queen> awokenQueens) {
+    public PlayerState(int playerIndex, Map<HandPosition, Card> cards, Map<AwokenQueenPosition, Queen> awokenQueens) {
         this.playerIndex = playerIndex;
         this.awokenQueens = awokenQueens;
-        this.cards = new HashMap<>();
-        for (int i = 0; i < cards.size(); i++) {
-            this.cards.put(new HandPosition(i, playerIndex), cards.get(i));
-        }
+        this.cards = cards;
     }
 
     public int getPlayerIndex() {
