@@ -54,7 +54,7 @@ public class CardDeck {
         return kingCards;
     }
 
-    static List<Card> getAllCardsExceptQueens() {
+    static List<Card> getDeckWithoutQueens() {
         List<Card> cards = new ArrayList<>();
         cards.addAll(getNumberCards());
         cards.addAll(getKingCards());

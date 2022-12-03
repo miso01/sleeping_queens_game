@@ -25,4 +25,12 @@ public class HandPosition extends Position {
     public int hashCode() {
         return Objects.hash(getCardIndex(), playerIndex);
     }
+
+    @Override
+    public String toString() {
+        return "HandPosition{" +
+                "cardIndex=" + getCardIndex() +
+                " playerIndex=" + playerIndex +
+                '}';
+    }
 }
