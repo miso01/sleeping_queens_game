@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class AwokenQueens extends QueenCollection<AwokenQueenPosition> {
@@ -7,6 +8,11 @@ public class AwokenQueens extends QueenCollection<AwokenQueenPosition> {
 
     public AwokenQueens(int playerIndex) {
         super();
+        this.playerIndex = playerIndex;
+    }
+
+    public AwokenQueens(int playerIndex, List<Queen> queens) {
+        super(queens);
         this.playerIndex = playerIndex;
     }
 

@@ -1,10 +1,15 @@
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class SleepingQueens extends QueenCollection<SleepingQueenPosition> {
 
     public SleepingQueens() {
         super(CardDeck.getAllQueens());
+    }
+
+    public SleepingQueens(List<Queen> queens) {
+        super(queens);
     }
 
     @Override
