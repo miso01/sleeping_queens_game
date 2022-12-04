@@ -1,3 +1,5 @@
+package model;
+
 import java.util.Objects;
 
 public class Card {
@@ -32,6 +34,6 @@ public class Card {
 
     @Override
     public String toString() {
-        return "Card{type=" + type + " & value=" + value + "}";
+        return "model.Card{type=" + type + " & value=" + value + "}";
     }
 }

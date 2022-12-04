@@ -1,3 +1,5 @@
+package model;
+
 import java.util.Objects;
 
 public class HandPosition extends Position {
@@ -28,7 +30,7 @@ public class HandPosition extends Position {
 
     @Override
     public String toString() {
-        return "HandPosition{" +
+        return "model.HandPosition{" +
                 "cardIndex=" + getCardIndex() +
                 " playerIndex=" + playerIndex +
                 '}';

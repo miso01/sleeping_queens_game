@@ -1,3 +1,5 @@
+package model;
+
 public class Queen {
     private final int points;
 

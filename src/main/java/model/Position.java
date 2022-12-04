@@ -1,8 +1,10 @@
+package model;
+
 abstract public class Position {
 
     private final int cardIndex;
 
-    Position(int cardIndex) {
+    public Position(int cardIndex) {
         this.cardIndex = cardIndex;
     }
 

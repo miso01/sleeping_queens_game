@@ -1,6 +1,8 @@
+package model;
+
 public class SleepingQueenPosition extends Position {
 
-    SleepingQueenPosition(int cardIndex) {
+    public SleepingQueenPosition(int cardIndex) {
         super(cardIndex);
     }
 }

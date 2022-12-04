@@ -1,3 +1,9 @@
+package model;
+
+import model.Card;
+import model.CardType;
+import model.Queen;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -54,7 +60,7 @@ public class CardDeck {
         return kingCards;
     }
 
-    static List<Card> getDeckWithoutQueens() {
+    static public List<Card> getDeckWithoutQueens() {
         List<Card> cards = new ArrayList<>();
         cards.addAll(getNumberCards());
         cards.addAll(getKingCards());
@@ -66,7 +72,7 @@ public class CardDeck {
         return cards;
     }
 
-    static List<Queen> getAllQueens() {
+    static public List<Queen> getAllQueens() {
         List<Queen> queens = new ArrayList<>();
         for (int i = 0; i < 4; i++) {
             queens.add(new Queen(5));

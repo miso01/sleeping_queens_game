@@ -1,3 +1,5 @@
+package model;
+
 public class AwokenQueenPosition extends Position {
 
     private final int playerIndex;

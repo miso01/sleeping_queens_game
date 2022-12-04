@@ -1,3 +1,5 @@
+package model;
+
 import java.util.*;
 
 public abstract class QueenCollection<T extends Position> {
@@ -28,5 +30,5 @@ public abstract class QueenCollection<T extends Position> {
         }
     }
 
-    abstract Map<T, Queen> getQueens();
+    public abstract Map<T, Queen> getQueens();
 }
