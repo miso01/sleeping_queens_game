@@ -1,3 +1,10 @@
+package model;
+
+import model.AwokenQueenPosition;
+import model.Card;
+import model.HandPosition;
+import model.Queen;
+
 import java.util.Map;
 
 public class PlayerState {
