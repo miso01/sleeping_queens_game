@@ -10,4 +10,11 @@ public class Queen {
     public int getPoints() {
         return points;
     }
+
+    @Override
+    public String toString() {
+        return "Queen{" +
+                "points=" + points +
+                '}';
+    }
 }
