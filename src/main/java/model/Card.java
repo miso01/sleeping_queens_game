@@ -3,6 +3,7 @@ package model;
 import java.util.Objects;
 
 public class Card {
+
     private final CardType type;
     private final int value;
 
@@ -34,6 +35,7 @@ public class Card {
 
     @Override
     public String toString() {
-        return "model.Card{type=" + type + " & value=" + value + "}";
+        return "Card{type=" + type + " & value=" + value + "}";
     }
+
 }

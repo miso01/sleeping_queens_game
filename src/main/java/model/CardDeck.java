@@ -1,9 +1,5 @@
 package model;
 
-import model.Card;
-import model.CardType;
-import model.Queen;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -74,19 +70,20 @@ public class CardDeck {
 
     static public List<Queen> getAllQueens() {
         List<Queen> queens = new ArrayList<>();
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 3; i++) {
             queens.add(new Queen(5));
         }
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 3; i++) {
             queens.add(new Queen(10));
         }
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 3; i++) {
             queens.add(new Queen(15));
         }
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 3; i++) {
             queens.add(new Queen(20));
         }
         Collections.shuffle(queens);
         return queens;
     }
+
 }

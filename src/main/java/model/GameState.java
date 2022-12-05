@@ -45,4 +45,17 @@ public class GameState {
     public List<Card> getCardsDiscardedLastTurn() {
         return cardsDiscardedLastTurn;
     }
+
+    @Override
+    public String toString() {
+        return "GameState{" +
+                "numberOfPlayers=" + numberOfPlayers +
+                ", onTurn=" + onTurn +
+                ", sleepingQueens=" + sleepingQueens +
+                ", cards=" + cards +
+                ", awokenQueens=" + awokenQueens +
+                ", cardsDiscardedLastTurn=" + cardsDiscardedLastTurn +
+                '}';
+    }
+
 }

@@ -1,7 +1,6 @@
 import model.Card;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class DrawAndDiscardPile {
@@ -18,18 +17,19 @@ public class DrawAndDiscardPile {
         this.drawAndShuffleStrategy = new ShuffleFirst();
     }
 
-    public DrawAndDiscardPile(List<Card> drawPile, List<Card> discardPile, DrawAndShuffleStrategy drawAndShuffleStrategy){
-        this(drawPile,discardPile);
+    public DrawAndDiscardPile(List<Card> drawPile, List<Card> discardPile, DrawAndShuffleStrategy drawAndShuffleStrategy) {
+        this(drawPile, discardPile);
         this.drawAndShuffleStrategy = drawAndShuffleStrategy;
     }
 
     public List<Card> discardAndDraw(List<Card> discardedCards) {
         lastDiscarded.clear();
         lastDiscarded.addAll(discardedCards);
-        return drawAndShuffleStrategy.drawAndDiscardUsingStrategy(drawPile, discardPile,discardedCards);
+        return drawAndShuffleStrategy.drawAndDiscardUsingStrategy(drawPile, discardPile, discardedCards);
     }
 
-    public List<Card> getCardsDiscardedThisTurn(){
+    public List<Card> getCardsDiscardedThisTurn() {
         return lastDiscarded;
     }
+
 }
