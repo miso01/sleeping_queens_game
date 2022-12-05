@@ -13,20 +13,20 @@ class GameFinishedTest {
     @Test
     void finishWhenAllQueensAreAwoken() {
         List<List<Card>> playersCards = new ArrayList<>(){{
-            add(TestHelper.getCardsWithDefenseCards());
-            add(TestHelper.getCardsWithAttackCards());
+            add(MockHelper.getCardsWithDefenseCards());
+            add(MockHelper.getCardsWithAttackCards());
         }};
 
         List<List<Queen>> playersAwokenQueens = new ArrayList<>(){{
-            add(TestHelper.get8Queens());
-            add(TestHelper.get3Queens());
+            add(MockHelper.get8Queens());
+            add(MockHelper.get3Queens());
         }};
 
         List<Queen> sleepingQueensList = new ArrayList<>(){{
             add(new Queen(20));
         }};
 
-        game = TestHelper.gameMock(playersCards, playersAwokenQueens, new SleepingQueens(sleepingQueensList));
+        game = MockHelper.gameMock(playersCards, playersAwokenQueens, new SleepingQueens(sleepingQueensList));
         assertEquals(-1,game.getGameState().getWinnerIdx());
         game.play(0, List.of(new HandPosition(0,0)),List.of(new SleepingQueenPosition(0)));
         assertEquals(0,game.getGameState().getWinnerIdx());
@@ -35,11 +35,11 @@ class GameFinishedTest {
     @Test
     void finishWhenEnoughPointsCollected() {
         List<List<Card>> playersCards = new ArrayList<>(){{
-            add(TestHelper.getCardsWithAttackCards());
-            add(TestHelper.get50PointsPlayerCards());
+            add(MockHelper.getCardsWithAttackCards());
+            add(MockHelper.get50PointsPlayerCards());
         }};
 
-        game = TestHelper.gameMock(playersCards);
+        game = MockHelper.gameMock(playersCards);
 
         assertEquals(-1,game.getGameState().getWinnerIdx());
         game.play(0, List.of(new HandPosition(0,0)),List.of(new SleepingQueenPosition(0)));
@@ -49,16 +49,16 @@ class GameFinishedTest {
     @Test
     void finishWhenEnoughQueensAwoken(){
         List<List<Card>> playersCards = new ArrayList<>(){{
-            add(TestHelper.getCardsWithAttackCards());
-            add(TestHelper.getCardsWithDefenseCards());
+            add(MockHelper.getCardsWithAttackCards());
+            add(MockHelper.getCardsWithDefenseCards());
         }};
 
         List<List<Queen>> playersAwokenQueens = new ArrayList<>(){{
-            add(TestHelper.get4Queens());
-            add(TestHelper.get3Queens());
+            add(MockHelper.get4Queens());
+            add(MockHelper.get3Queens());
         }};
 
-        game = TestHelper.gameMock(playersCards, playersAwokenQueens, new SleepingQueens(TestHelper.get8Queens()));
+        game = MockHelper.gameMock(playersCards, playersAwokenQueens, new SleepingQueens(MockHelper.get8Queens()));
 
         assertEquals(-1,game.getGameState().getWinnerIdx());
         game.play(0, List.of(new HandPosition(0,0)),List.of(new SleepingQueenPosition(0)));
