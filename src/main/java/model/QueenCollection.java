@@ -18,13 +18,17 @@ public abstract class QueenCollection<T extends Position> {
         this.queens.add(queen);
     }
 
-    protected void addQueens(List<Queen> queens) {
-        this.queens.addAll(queens);
-    }
-
     public Optional<Queen> removeQueen(Position position) {
         try {
             return Optional.ofNullable(queens.remove(position.getCardIndex()));
+        } catch (IndexOutOfBoundsException e) {
+            return Optional.empty();
+        }
+    }
+
+    public Optional<Queen> getQueen(Position position) {
+        try {
+            return Optional.ofNullable(queens.get(position.getCardIndex()));
         } catch (IndexOutOfBoundsException e) {
             return Optional.empty();
         }

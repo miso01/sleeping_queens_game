@@ -12,14 +12,16 @@ public class GameState {
     private final Map<HandPosition, Card> cards;
     private final Map<AwokenQueenPosition, Queen> awokenQueens;
     private final List<Card> cardsDiscardedLastTurn;
+    private final int winnerIdx;
 
-    public GameState(int numberOfPlayers, int onTurn, Set<SleepingQueenPosition> sleepingQueens, Map<HandPosition, Card> cards, Map<AwokenQueenPosition, Queen> awokenQueens, List<Card> cardsDiscardedLastTurn) {
+    public GameState(int numberOfPlayers, int onTurn, Set<SleepingQueenPosition> sleepingQueens, Map<HandPosition, Card> cards, Map<AwokenQueenPosition, Queen> awokenQueens, List<Card> cardsDiscardedLastTurn, int winnerIdx) {
         this.numberOfPlayers = numberOfPlayers;
         this.onTurn = onTurn;
         this.sleepingQueens = sleepingQueens;
         this.cards = cards;
         this.awokenQueens = awokenQueens;
         this.cardsDiscardedLastTurn = cardsDiscardedLastTurn;
+        this.winnerIdx = winnerIdx;
     }
 
     public int getNumberOfPlayers() {
@@ -46,6 +48,10 @@ public class GameState {
         return cardsDiscardedLastTurn;
     }
 
+    public int getWinnerIdx() {
+        return winnerIdx;
+    }
+
     @Override
     public String toString() {
         return "GameState{" +
@@ -55,6 +61,7 @@ public class GameState {
                 ", cards=" + cards +
                 ", awokenQueens=" + awokenQueens +
                 ", cardsDiscardedLastTurn=" + cardsDiscardedLastTurn +
+                ", winnerIdx=" + winnerIdx +
                 '}';
     }
 

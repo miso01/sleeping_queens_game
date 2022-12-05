@@ -22,5 +22,4 @@ public class SleepingQueens extends QueenCollection<SleepingQueenPosition> {
         }
         return queensMap;
     }
-
 }
