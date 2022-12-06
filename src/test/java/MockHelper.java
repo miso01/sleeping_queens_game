@@ -16,7 +16,7 @@ public class MockHelper {
             add(new Card(CardType.Number, 7));
             add(new Card(CardType.Number, 8));
             add(new Card(CardType.Number, 9));
-            add(new Card(CardType.Knight, 10));
+            add(new Card(CardType.Number, 10));
         }};
     }
 

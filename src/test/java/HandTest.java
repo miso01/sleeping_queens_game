@@ -1,8 +1,10 @@
+import model.Card;
+import model.CardType;
+import model.HandPosition;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -14,39 +16,14 @@ class HandTest {
 
     @BeforeEach
     void setUp() {
-        List<Card> handCards = new ArrayList<>() {{
-            add(new Card(CardType.Number, 1));
-            add(new Card(CardType.Number, 2));
-            add(new Card(CardType.Number, 3));
-            add(new Card(CardType.Knight, 0));
-            add(new Card(CardType.SleepingPotion, 0));
-        }};
-
-
-        List<Card> drawingCards = new ArrayList<>() {{
-            add(new Card(CardType.Number, 4));
-            add(new Card(CardType.Number, 5));
-            add(new Card(CardType.Number, 6));
-            add(new Card(CardType.Number, 7));
-            add(new Card(CardType.Number, 8));
-            add(new Card(CardType.Number, 9));
-            add(new Card(CardType.Knight, 10));
-            add(new Card(CardType.MagicWand, 0));
-            add(new Card(CardType.SleepingPotion, 0));
-            add(new Card(CardType.Knight, 0));
-            add(new Card(CardType.SleepingPotion, 0));
-            add(new Card(CardType.Dragon, 0));
-        }};
-        hand = new Hand(0, handCards, new DrawAndDiscardPile(drawingCards, new ArrayList<>()));
+        hand = new Hand(0, MockHelper.getCardsWithAttackCards(), new DrawAndDiscardPile(MockHelper.getDefaultDrawingPile(), new ArrayList<>()));
     }
-
 
     @Test
     void removeCardsAndRedraw() {
         Map<HandPosition, Card> cardsToDiscard = Map.of(
-                new HandPosition(0, 0), new Card(CardType.Number, 4),
-                new HandPosition(1, 0), new Card(CardType.Number, 5),
-                new HandPosition(2, 0), new Card(CardType.Number, 6)
+                new HandPosition(0, 0), new Card(CardType.Knight, 1),
+                new HandPosition(1, 0), new Card(CardType.SleepingPotion, 2)
         );
 
         hand.removeCardsAndRedraw(cardsToDiscard.keySet().stream().toList());
@@ -78,4 +55,5 @@ class HandTest {
         Map<HandPosition, Card> cards = hand.hasCardOfType(CardType.MagicWand);
         assertEquals(Set.of(), cards.keySet());
     }
+
 }

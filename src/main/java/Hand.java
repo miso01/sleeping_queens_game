@@ -1,3 +1,7 @@
+import model.Card;
+import model.CardType;
+import model.HandPosition;
+
 import java.util.*;
 
 public class Hand {
@@ -13,17 +17,7 @@ public class Hand {
         }
     }
 
-    Optional<List<Card>> pickCards(List<HandPosition> positions){
-
-        return Optional.empty();
-    }
-
-    Map<HandPosition,Card> removePickedCardsAndRedraw(){
-
-        return null;
-    }
-
-    Map<HandPosition, Card> removeCardsAndRedraw(List<HandPosition> positionsToRemove){
+    public Map<HandPosition, Card> removeCardsAndRedraw(List<HandPosition> positionsToRemove) {
         List<Card> cardsToRemove = new ArrayList<>();
         for (HandPosition position : positionsToRemove) {
             cardsToRemove.add(cards.remove(position));
@@ -39,17 +33,17 @@ public class Hand {
     }
 
 
-    public Map<HandPosition, Card> hasCardOfType(CardType cardType){
-        Map<HandPosition,Card> cardsOfSearchedType = new HashMap<>();
-        cards.forEach((handPosition,card) -> {
-            if(card.getType() == cardType){
+    public Map<HandPosition, Card> hasCardOfType(CardType cardType) {
+        Map<HandPosition, Card> cardsOfSearchedType = new HashMap<>();
+        cards.forEach((handPosition, card) -> {
+            if (card.getType() == cardType) {
                 cardsOfSearchedType.put(handPosition, card);
             }
         });
         return cardsOfSearchedType;
     }
 
-    public Map<HandPosition,Card> getCards() {
+    public Map<HandPosition, Card> getCards() {
         return cards;
     }
 }
