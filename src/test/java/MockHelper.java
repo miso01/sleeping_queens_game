@@ -34,16 +34,16 @@ public class MockHelper {
         return new ArrayList<>() {{
             add(new Card(CardType.Knight, 0));
             add(new Card(CardType.SleepingPotion, 0));
+            add(new Card(CardType.King, 0));
             add(new Card(CardType.Number, 1));
             add(new Card(CardType.Number, 2));
-            add(new Card(CardType.Number, 3));
         }};
     }
 
     public static List<Card> getCardsWithDefenseCards() {
         return new ArrayList<>() {{
-            add(new Card(CardType.Knight, 0));
-            add(new Card(CardType.SleepingPotion, 0));
+            add(new Card(CardType.MagicWand, 0));
+            add(new Card(CardType.Dragon, 0));
             add(new Card(CardType.Number, 1));
             add(new Card(CardType.Number, 2));
             add(new Card(CardType.Number, 3));
@@ -85,7 +85,7 @@ public class MockHelper {
         int onTurn = 0;
 
         List<Player> players = new ArrayList<>();
-        SleepingQueens sleepingQueens = new SleepingQueens(new ArrayList<>());
+        SleepingQueens sleepingQueens = new SleepingQueens();
         DrawAndDiscardPile drawAndDiscardPile = new DrawAndDiscardPile(getDefaultDrawingPile(), new ArrayList<>(), new ShuffleFirst());
 
         players.add(new Player(0, new Hand(0, getCardsWithAttackCards(), drawAndDiscardPile), sleepingQueens, new AwokenQueens(0)));
@@ -105,7 +105,7 @@ public class MockHelper {
         int numberOfPlayers = playersCards.size();
         int onTurn = 0;
         List<Player> players = new ArrayList<>();
-        SleepingQueens sleepingQueens = new SleepingQueens(new ArrayList<>());
+        SleepingQueens sleepingQueens = new SleepingQueens();
 
         DrawAndDiscardPile drawAndDiscardPile = new DrawAndDiscardPile(getDefaultDrawingPile(), new ArrayList<>(), new ShuffleFirst());
 

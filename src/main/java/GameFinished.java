@@ -5,7 +5,7 @@ import java.util.*;
 public class GameFinished implements GameFinishedStrategy {
 
     @Override
-    public Optional<Integer> isFinished(GameState gameState) {
+    public int isFinished(GameState gameState) {
 
         int pointsNeeded = -1;
         int queensNeeded = -1;
@@ -31,19 +31,19 @@ public class GameFinished implements GameFinishedStrategy {
 
         Map.Entry<Integer, Integer> maxPoints = Collections.max(points.entrySet(), Map.Entry.comparingByValue());
         if (maxPoints.getValue() >= pointsNeeded) {
-            return Optional.of(maxPoints.getKey());
+            return maxPoints.getKey();
         }
 
         Map.Entry<Integer, Integer> maxQueens = Collections.max(points.entrySet(), Map.Entry.comparingByValue());
         if (maxQueens.getValue() >= queensNeeded) {
-            return Optional.of(maxQueens.getKey());
+            return maxQueens.getKey();
         }
 
         if(gameState.getSleepingQueens().isEmpty()) {
-            return Optional.of(maxPoints.getKey());
+            return maxPoints.getKey();
         }
 
-        return Optional.empty();
+        return -1;
     }
 }
 
