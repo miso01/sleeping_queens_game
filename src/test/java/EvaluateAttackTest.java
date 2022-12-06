@@ -20,65 +20,18 @@ class EvaluateAttackTest {
 
     @BeforeEach
     void setUp() {
-        List<Queen> sleepingQueenList = new ArrayList<>() {{
-            add(new Queen(5));
-            add(new Queen(5));
-            add(new Queen(10));
-            add(new Queen(10));
-            add(new Queen(15));
-            add(new Queen(15));
-            add(new Queen(20));
-            add(new Queen(20));
-        }};
-
-        sleepingQueens = new SleepingQueens(sleepingQueenList);
-
+        sleepingQueens = new SleepingQueens(MockHelper.get8Queens());
         evaluateAttack = new EvaluateAttack(sleepingQueens);
-        List<Card> drawingPile = new ArrayList<>() {{
-            add(new Card(CardType.Number, 1));
-            add(new Card(CardType.Number, 2));
-            add(new Card(CardType.Number, 3));
-            add(new Card(CardType.Number, 4));
-            add(new Card(CardType.Number, 5));
-            add(new Card(CardType.Number, 6));
-            add(new Card(CardType.Number, 7));
-            add(new Card(CardType.Number, 8));
-            add(new Card(CardType.Number, 9));
-            add(new Card(CardType.Number, 10));
-        }};
-
-        drawAndDiscardPile = new DrawAndDiscardPile(drawingPile, new ArrayList<>());
-
-        List<Card> attackerCards = new ArrayList<>() {{
-            add(new Card(CardType.Number, 1));
-            add(new Card(CardType.Number, 2));
-            add(new Card(CardType.King, 0));
-            add(new Card(CardType.Knight, 0));
-            add(new Card(CardType.SleepingPotion, 0));
-        }};
-        List<Card> defenderCards = new ArrayList<>() {{
-            add(new Card(CardType.Number, 3));
-            add(new Card(CardType.Number, 4));
-            add(new Card(CardType.Number, 5));
-            add(new Card(CardType.MagicWand, 0));
-            add(new Card(CardType.Dragon, 0));
-        }};
-
-        defenderAwokenQueens = new AwokenQueens(DEFENDER_INDEX, new ArrayList<>(){{
-            add(new Queen(5));
-            add(new Queen(10));
-            add(new Queen(15));
-            add(new Queen(20));
-        }});
-
-        attacker = new Player(ATTACKER_INDEX, new Hand(ATTACKER_INDEX, attackerCards, drawAndDiscardPile), sleepingQueens, new AwokenQueens(ATTACKER_INDEX));
-        defender = new Player(DEFENDER_INDEX, new Hand(DEFENDER_INDEX, defenderCards, drawAndDiscardPile), sleepingQueens, defenderAwokenQueens);
+        drawAndDiscardPile = new DrawAndDiscardPile(MockHelper.getDefaultDrawingPile(), new ArrayList<>());
+        defenderAwokenQueens = new AwokenQueens(DEFENDER_INDEX, MockHelper.get4Queens());
+        attacker = new Player(ATTACKER_INDEX, new Hand(ATTACKER_INDEX, MockHelper.getCardsWithAttackCards(), drawAndDiscardPile), sleepingQueens, new AwokenQueens(ATTACKER_INDEX));
+        defender = new Player(DEFENDER_INDEX, new Hand(DEFENDER_INDEX, MockHelper.getCardsWithAttackCards(), drawAndDiscardPile), sleepingQueens, defenderAwokenQueens);
     }
 
     @Test
     void defenseAgainstKnightAttack() {
-        assertTrue(evaluateAttack.play(defender, attacker, new AwokenQueenPosition(0, DEFENDER_INDEX), new HandPosition(3, ATTACKER_INDEX)));
-        assertEquals(4, defender.getAwokenQueens().getQueens().size());
+        assertTrue(evaluateAttack.play(defender, attacker, new AwokenQueenPosition(0, DEFENDER_INDEX), new HandPosition(0, ATTACKER_INDEX)));
+        assertEquals(3, defender.getAwokenQueens().getQueens().size());
         defender.getHand().getCards().values().forEach(card -> assertNotSame(card.getType(), CardType.Dragon));
         attacker.getHand().getCards().values().forEach(card -> assertNotSame(card.getType(), CardType.Knight));
         assertEquals(5, attacker.getHand().getCards().size());
@@ -86,16 +39,9 @@ class EvaluateAttackTest {
     }
 
     @Test
-    void knightAttack(){
-        List<Card> defenderCards = new ArrayList<>() {{
-            add(new Card(CardType.Number, 4));
-            add(new Card(CardType.Number, 5));
-            add(new Card(CardType.Number, 6));
-            add(new Card(CardType.MagicWand, 0));
-            add(new Card(CardType.SleepingPotion, 0));
-        }};
-        defender = new Player(DEFENDER_INDEX, new Hand(DEFENDER_INDEX, defenderCards, drawAndDiscardPile), sleepingQueens, defenderAwokenQueens);
-        assertTrue(evaluateAttack.play(defender, attacker, new AwokenQueenPosition(0, DEFENDER_INDEX), new HandPosition(3, ATTACKER_INDEX)));
+    void knightAttack() {
+        defender = new Player(DEFENDER_INDEX, new Hand(DEFENDER_INDEX, MockHelper.getCardsWithAttackCards(), drawAndDiscardPile), sleepingQueens, defenderAwokenQueens);
+        assertTrue(evaluateAttack.play(defender, attacker, new AwokenQueenPosition(0, DEFENDER_INDEX), new HandPosition(0, ATTACKER_INDEX)));
         attacker.getHand().getCards().values().forEach(card -> assertNotSame(card.getType(), CardType.Knight));
         assertEquals(3, defender.getAwokenQueens().getQueens().size());
         assertEquals(1, attacker.getAwokenQueens().getQueens().size());
@@ -103,9 +49,9 @@ class EvaluateAttackTest {
 
 
     @Test
-    void defenseAgainstSleepingPotionAttack(){
-        assertTrue(evaluateAttack.play(defender, attacker, new AwokenQueenPosition(0, DEFENDER_INDEX), new HandPosition(4, ATTACKER_INDEX)));
-        assertEquals(4, defender.getAwokenQueens().getQueens().size());
+    void defenseAgainstSleepingPotionAttack() {
+        assertTrue(evaluateAttack.play(defender, attacker, new AwokenQueenPosition(0, DEFENDER_INDEX), new HandPosition(1, ATTACKER_INDEX)));
+        assertEquals(3, defender.getAwokenQueens().getQueens().size());
         defender.getHand().getCards().values().forEach(card -> assertNotSame(card.getType(), CardType.MagicWand));
         attacker.getHand().getCards().values().forEach(card -> assertNotSame(card.getType(), CardType.SleepingPotion));
         assertEquals(5, attacker.getHand().getCards().size());
@@ -113,16 +59,9 @@ class EvaluateAttackTest {
     }
 
     @Test
-    void sleepingPotionAttack(){
-        List<Card> defenderCards = new ArrayList<>() {{
-            add(new Card(CardType.Number, 4));
-            add(new Card(CardType.Number, 5));
-            add(new Card(CardType.Number, 6));
-            add(new Card(CardType.Knight, 0));
-            add(new Card(CardType.Dragon, 0));
-        }};
-        defender = new Player(DEFENDER_INDEX, new Hand(DEFENDER_INDEX, defenderCards, drawAndDiscardPile), sleepingQueens, defenderAwokenQueens);
-        assertTrue(evaluateAttack.play(defender, attacker, new AwokenQueenPosition(0, DEFENDER_INDEX), new HandPosition(4, ATTACKER_INDEX)));
+    void sleepingPotionAttack() {
+        defender = new Player(DEFENDER_INDEX, new Hand(DEFENDER_INDEX, MockHelper.getCardsWithAttackCards(), drawAndDiscardPile), sleepingQueens, defenderAwokenQueens);
+        assertTrue(evaluateAttack.play(defender, attacker, new AwokenQueenPosition(0, DEFENDER_INDEX), new HandPosition(1, ATTACKER_INDEX)));
         attacker.getHand().getCards().values().forEach(card -> assertNotSame(card.getType(), CardType.SleepingPotion));
         assertEquals(3, defender.getAwokenQueens().getQueens().size());
         assertEquals(0, attacker.getAwokenQueens().getQueens().size());
@@ -130,7 +69,7 @@ class EvaluateAttackTest {
     }
 
     @Test
-    void kingAttack(){
+    void kingAttack() {
         assertTrue(evaluateAttack.play(defender, attacker, new SleepingQueenPosition(0), new HandPosition(2, ATTACKER_INDEX)));
         assertEquals(5, attacker.getHand().getCards().size());
         assertEquals(4, defender.getAwokenQueens().getQueens().size());

@@ -62,7 +62,6 @@ class DrawAndDiscardPileTest {
         List<Card> drawnCards = piles.discardAndDraw(cardsToDiscard);
         assertEquals(new Card(CardType.Knight, 0), drawnCards.get(0));
         assertEquals(new Card(CardType.SleepingPotion, 0), drawnCards.get(1));
-        assertEquals(CardType.Number, drawnCards.get(2).getType());
     }
 
     @Test
@@ -73,7 +72,7 @@ class DrawAndDiscardPileTest {
             add(new Card(CardType.SleepingPotion, 1));
         }};
         List<Card> drawnCards = piles.discardAndDraw(discardedCards);
-        Assertions.assertIterableEquals(drawnCards, List.of(new Card(CardType.Knight, 1), new Card(CardType.Number, 10)));
+        Assertions.assertIterableEquals(drawnCards, List.of(new Card(CardType.Knight, 0), new Card(CardType.SleepingPotion, 0)));
     }
 
     @Test
