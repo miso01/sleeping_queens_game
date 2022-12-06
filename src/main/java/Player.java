@@ -69,7 +69,8 @@ public class Player {
                     }
                 }
             }
-
+        } else {
+            throw new IllegalArgumentException("You have entered invalid cards!");
         }
     }
 
