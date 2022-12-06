@@ -1,3 +1,3 @@
 public interface GamePlayerInterface {
-    void play(String command);
+    String play(String player, String command);
 }

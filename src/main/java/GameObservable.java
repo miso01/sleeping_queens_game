@@ -1,28 +1,39 @@
+import model.GameState;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class GameObservable {
 
-    private List<GameObserver> subscribers;
+    private final List<GameObserver> otherSubscribers;
+    private final Map<Integer,GameObserver> playerSubscribers;
 
     public GameObservable() {
-        subscribers = new ArrayList<>();
+        otherSubscribers = new ArrayList<>();
+        playerSubscribers = new HashMap<>();
     }
 
     void add(GameObserver gameObserver) {
-        subscribers.add(gameObserver);
+        otherSubscribers.add(gameObserver);
     }
 
     void remove(GameObserver gameObserver) {
-        subscribers.remove(gameObserver);
+        otherSubscribers.remove(gameObserver);
     }
 
     void addPlayer(int playerIndex, GameObserver observer){
-
+        playerSubscribers.put(playerIndex,observer);
     }
 
-    void notifyAll(GameState message){
+    void removePlayer(int playerIndex){
+        playerSubscribers.remove(playerIndex);
+    }
 
+    void notifyAll(GameState gameState){
+        otherSubscribers.forEach(subscriber -> subscriber.notify(gameState.toString()));
+        playerSubscribers.values().forEach(subscriber -> subscriber.notify(gameState.toString()));
     }
 
 }
