@@ -1,9 +1,8 @@
+import model.Card;
+import model.CardType;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.engine.execution.ExtensionValuesStore;
-import org.junit.jupiter.params.shadow.com.univocity.parsers.annotations.Format;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -45,4 +44,5 @@ class EvaluateNumberedCardsTest {
         ));
         assertFalse(result);
     }
+
 }

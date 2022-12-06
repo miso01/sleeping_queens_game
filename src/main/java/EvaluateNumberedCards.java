@@ -1,3 +1,5 @@
+import model.Card;
+
 import java.util.List;
 
 public class EvaluateNumberedCards {
