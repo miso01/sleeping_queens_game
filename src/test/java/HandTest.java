@@ -38,16 +38,15 @@ class HandTest {
     void hasCardOfTypeNumber() {
         Map<HandPosition, Card> cards = hand.hasCardOfType(CardType.Number);
         assertEquals(Set.of(
-                new HandPosition(0, 0),
-                new HandPosition(1, 0),
-                new HandPosition(2, 0)
+                new HandPosition(3, 0),
+                new HandPosition(4, 0)
         ), cards.keySet());
     }
 
     @Test
     void hasCardOfTypeKnight() {
         Map<HandPosition, Card> cards = hand.hasCardOfType(CardType.Knight);
-        assertEquals(Set.of(new HandPosition(3, 0)), cards.keySet());
+        assertEquals(Set.of(new HandPosition(0, 0)), cards.keySet());
     }
 
     @Test
