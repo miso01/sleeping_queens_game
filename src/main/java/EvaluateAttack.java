@@ -5,9 +5,9 @@ import java.util.Optional;
 
 public class EvaluateAttack {
 
-    private final SleepingQueens sleepingQueens;
+    private final QueenCollection<SleepingQueenPosition> sleepingQueens;
 
-    public EvaluateAttack(SleepingQueens sleepingQueens) {
+    public EvaluateAttack(QueenCollection<SleepingQueenPosition> sleepingQueens) {
         this.sleepingQueens = sleepingQueens;
     }
 

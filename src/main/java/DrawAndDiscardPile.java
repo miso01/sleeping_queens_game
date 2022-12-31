@@ -3,7 +3,7 @@ import model.Card;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DrawAndDiscardPile {
+public class DrawAndDiscardPile implements IPile {
 
     private final List<Card> drawPile;
     private final List<Card> discardPile;
@@ -22,12 +22,14 @@ public class DrawAndDiscardPile {
         this.drawAndShuffleStrategy = drawAndShuffleStrategy;
     }
 
+    @Override
     public List<Card> discardAndDraw(List<Card> discardedCards) {
         lastDiscarded.clear();
         lastDiscarded.addAll(discardedCards);
         return drawAndShuffleStrategy.drawAndDiscardUsingStrategy(drawPile, discardPile, discardedCards);
     }
 
+    @Override
     public List<Card> getCardsDiscardedThisTurn() {
         return lastDiscarded;
     }

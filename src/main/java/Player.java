@@ -8,14 +8,14 @@ import java.util.Optional;
 public class Player {
 
     private final int playerIndex;
-    private final Hand hand;
-    private final AwokenQueens awokenQueens;
+    private final IHand hand;
+    private final QueenCollection<AwokenQueenPosition> awokenQueens;
     private final MoveQueen moveQueen;
     private final EvaluateNumberedCards evaluateNumberedCards;
     private final EvaluateAttack evaluateAttack;
-    private final SleepingQueens sleepingQueens;
+    private final QueenCollection<SleepingQueenPosition> sleepingQueens;
 
-    public Player(int playerIndex, Hand hand, SleepingQueens sleepingQueens, AwokenQueens awokenQueens) {
+    public Player(int playerIndex, IHand hand, QueenCollection<SleepingQueenPosition> sleepingQueens, QueenCollection<AwokenQueenPosition> awokenQueens) {
         this.playerIndex = playerIndex;
         this.awokenQueens = awokenQueens;
         this.hand = hand;
@@ -78,11 +78,11 @@ public class Player {
         return new PlayerState(playerIndex, hand.getCards(), awokenQueens.getQueens());
     }
 
-    public Hand getHand() {
+    public IHand getHand() {
         return hand;
     }
 
-    public AwokenQueens getAwokenQueens() {
+    public QueenCollection<AwokenQueenPosition> getAwokenQueens() {
         return awokenQueens;
     }
 

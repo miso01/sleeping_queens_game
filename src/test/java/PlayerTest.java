@@ -1,8 +1,6 @@
 import model.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -13,7 +11,6 @@ class PlayerTest {
     private Player attacker;
     private Player defender;
     private SleepingQueens sleepingQueens;
-    private DrawAndDiscardPile drawAndDiscardPile;
     private AwokenQueens defenderAwokenQueens;
     private final int ATTACKER_INDEX = 0;
     private final int DEFENDER_INDEX = 1;
@@ -21,10 +18,9 @@ class PlayerTest {
     @BeforeEach
     void setUp() {
         sleepingQueens = new SleepingQueens(MockHelper.get8Queens());
-        drawAndDiscardPile = new DrawAndDiscardPile(MockHelper.getDefaultDrawingPile(), new ArrayList<>());
         defenderAwokenQueens = new AwokenQueens(DEFENDER_INDEX, MockHelper.get4Queens());
-        attacker = new Player(ATTACKER_INDEX, new Hand(ATTACKER_INDEX, MockHelper.getCardsWithAttackCards(), drawAndDiscardPile), sleepingQueens, new AwokenQueens(ATTACKER_INDEX));
-        defender = new Player(DEFENDER_INDEX, new Hand(DEFENDER_INDEX, MockHelper.getCardsWithAttackCards(), drawAndDiscardPile), sleepingQueens, defenderAwokenQueens);
+        attacker = new Player(ATTACKER_INDEX, new MockHand(ATTACKER_INDEX, MockHelper.getCardsWithAttackCards(),MockHelper.getDefaultDrawingPile()), sleepingQueens, new AwokenQueens(ATTACKER_INDEX));
+        defender = new Player(DEFENDER_INDEX, new MockHand(DEFENDER_INDEX, MockHelper.getCardsWithAttackCards(), MockHelper.getDefaultDrawingPile()), sleepingQueens, defenderAwokenQueens);
     }
 
     @Test
@@ -39,7 +35,7 @@ class PlayerTest {
 
     @Test
     void knightAttack() {
-        defender = new Player(DEFENDER_INDEX, new Hand(DEFENDER_INDEX, MockHelper.getCardsWithAttackCards(), drawAndDiscardPile), sleepingQueens, defenderAwokenQueens);
+        defender = new Player(DEFENDER_INDEX, new MockHand(DEFENDER_INDEX, MockHelper.getCardsWithAttackCards(), MockHelper.getDefaultDrawingPile()), sleepingQueens, defenderAwokenQueens);
         attacker.play(defender,List.of(new HandPosition(0, ATTACKER_INDEX)), new AwokenQueenPosition(0, DEFENDER_INDEX));
         attacker.getHand().getCards().values().forEach(card -> assertNotSame(card.getType(), CardType.Knight));
         assertEquals(3, defender.getAwokenQueens().getQueens().size());
@@ -59,7 +55,7 @@ class PlayerTest {
 
     @Test
     void sleepingPotionAttack() {
-        defender = new Player(DEFENDER_INDEX, new Hand(DEFENDER_INDEX, MockHelper.getCardsWithAttackCards(), drawAndDiscardPile), sleepingQueens, defenderAwokenQueens);
+        defender = new Player(DEFENDER_INDEX, new MockHand(DEFENDER_INDEX, MockHelper.getCardsWithAttackCards(), MockHelper.getDefaultDrawingPile()), sleepingQueens, defenderAwokenQueens);
         attacker.play(defender,  List.of(new HandPosition(1, ATTACKER_INDEX)), new AwokenQueenPosition(0, DEFENDER_INDEX));
         attacker.getHand().getCards().values().forEach(card -> assertNotSame(card.getType(), CardType.SleepingPotion));
         assertEquals(3, defender.getAwokenQueens().getQueens().size());

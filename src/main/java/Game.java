@@ -10,10 +10,10 @@ public class Game {
     private GameState gameState;
     private final int numberOfPlayers;
     private final SleepingQueens sleepingQueens;
-    private final DrawAndDiscardPile drawAndDiscardPile;
+    private final IPile drawAndDiscardPile;
     private int winnerId;
 
-    public Game(int numberOfPlayers, int onTurn, List<Player> players, SleepingQueens sleepingQueens, DrawAndDiscardPile drawAndDiscardPile, GameFinishedStrategy gameFinishedStrategy) {
+    public Game(int numberOfPlayers, int onTurn, List<Player> players, SleepingQueens sleepingQueens, IPile drawAndDiscardPile, GameFinishedStrategy gameFinishedStrategy) {
         this.numberOfPlayers = numberOfPlayers;
         this.onTurn = onTurn;
         this.players = players;

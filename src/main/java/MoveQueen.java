@@ -4,15 +4,15 @@ import java.util.Optional;
 
 public class MoveQueen {
 
-    private final SleepingQueens sleepingQueens;
-    private final AwokenQueens defenderAwokenQueens;
+    private final QueenCollection<SleepingQueenPosition> sleepingQueens;
+    private final QueenCollection<AwokenQueenPosition> defenderAwokenQueens;
 
-    public MoveQueen(SleepingQueens sleepingQueens, AwokenQueens defenderAwokenQueens) {
+    public MoveQueen(QueenCollection<SleepingQueenPosition> sleepingQueens, QueenCollection<AwokenQueenPosition> defenderAwokenQueens) {
         this.sleepingQueens = sleepingQueens;
         this.defenderAwokenQueens = defenderAwokenQueens;
     }
 
-    boolean stealQueen(AwokenQueenPosition awokenQueenPosition, AwokenQueens attackerAwokenQueens) {
+    boolean stealQueen(AwokenQueenPosition awokenQueenPosition, QueenCollection<AwokenQueenPosition> attackerAwokenQueens) {
         Optional<Queen> queen = defenderAwokenQueens.removeQueen(awokenQueenPosition);
         if (queen.isPresent()) {
             attackerAwokenQueens.addQueen(queen.get());
