@@ -3,7 +3,7 @@ import model.Card;
 import java.util.ArrayList;
 import java.util.List;
 
-public interface DrawAndShuffleStrategy {
+public interface IDrawAndShuffleStrategy {
     List<Card> drawAndDiscardUsingStrategy(List<Card> drawPile, List<Card> discardPile, List<Card> discardedCards);
 
     default List<Card> drawAndDiscardNormally(List<Card> drawPile, List<Card> discardPile, List<Card> discardedCards) {

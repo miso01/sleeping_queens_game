@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Game {
 
-    private final GameFinishedStrategy gameFinishedStrategy;
+    private final IGameFinishedStrategy gameFinishedStrategy;
     private final List<Player> players;
     private int onTurn;
     private GameState gameState;
@@ -13,7 +13,7 @@ public class Game {
     private final IPile drawAndDiscardPile;
     private int winnerId;
 
-    public Game(int numberOfPlayers, int onTurn, List<Player> players, SleepingQueens sleepingQueens, IPile drawAndDiscardPile, GameFinishedStrategy gameFinishedStrategy) {
+    public Game(int numberOfPlayers, int onTurn, List<Player> players, SleepingQueens sleepingQueens, IPile drawAndDiscardPile, IGameFinishedStrategy gameFinishedStrategy) {
         this.numberOfPlayers = numberOfPlayers;
         this.onTurn = onTurn;
         this.players = players;

@@ -1,3 +1,3 @@
-public interface GameObserver {
+public interface IGameObserver {
     void notify(String message);
 }

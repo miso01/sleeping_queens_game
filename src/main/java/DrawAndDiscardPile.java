@@ -8,7 +8,7 @@ public class DrawAndDiscardPile implements IPile {
     private final List<Card> drawPile;
     private final List<Card> discardPile;
     private final List<Card> lastDiscarded;
-    private DrawAndShuffleStrategy drawAndShuffleStrategy;
+    private IDrawAndShuffleStrategy drawAndShuffleStrategy;
 
     public DrawAndDiscardPile(List<Card> drawPile, List<Card> discardPile) {
         this.drawPile = drawPile;
@@ -17,7 +17,7 @@ public class DrawAndDiscardPile implements IPile {
         this.drawAndShuffleStrategy = new ShuffleFirst();
     }
 
-    public DrawAndDiscardPile(List<Card> drawPile, List<Card> discardPile, DrawAndShuffleStrategy drawAndShuffleStrategy) {
+    public DrawAndDiscardPile(List<Card> drawPile, List<Card> discardPile, IDrawAndShuffleStrategy drawAndShuffleStrategy) {
         this(drawPile, discardPile);
         this.drawAndShuffleStrategy = drawAndShuffleStrategy;
     }

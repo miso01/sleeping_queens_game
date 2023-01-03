@@ -7,23 +7,23 @@ import java.util.Map;
 
 public class GameObservable {
 
-    private final List<GameObserver> otherSubscribers;
-    private final Map<Integer,GameObserver> playerSubscribers;
+    private final List<IGameObserver> otherSubscribers;
+    private final Map<Integer, IGameObserver> playerSubscribers;
 
     public GameObservable() {
         otherSubscribers = new ArrayList<>();
         playerSubscribers = new HashMap<>();
     }
 
-    void add(GameObserver gameObserver) {
+    void add(IGameObserver gameObserver) {
         otherSubscribers.add(gameObserver);
     }
 
-    void remove(GameObserver gameObserver) {
+    void remove(IGameObserver gameObserver) {
         otherSubscribers.remove(gameObserver);
     }
 
-    void addPlayer(int playerIndex, GameObserver observer){
+    void addPlayer(int playerIndex, IGameObserver observer){
         playerSubscribers.put(playerIndex,observer);
     }
 

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class GameAdaptor implements GamePlayerInterface {
+public class GameAdaptor implements IGamePlayerInterface {
 
     private final Game game;
     private final GameObservable gameObservable;

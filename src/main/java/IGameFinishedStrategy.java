@@ -1,5 +1,5 @@
 import model.GameState;
 
-public interface GameFinishedStrategy {
+public interface IGameFinishedStrategy {
     int isFinished(GameState gameState);
 }

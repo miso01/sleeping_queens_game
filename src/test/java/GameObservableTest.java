@@ -3,7 +3,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
-import java.io.Console;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -18,7 +17,7 @@ class GameObservableTest {
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private final PrintStream originalOut = System.out;
 
-    private static class DummyObserver implements GameObserver {
+    private static class DummyObserver implements IGameObserver {
         @Override
         public void notify(String message) {
             System.out.println("DummyObserverTest: " + message);

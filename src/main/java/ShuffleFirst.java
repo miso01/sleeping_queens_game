@@ -6,7 +6,7 @@ import java.util.List;
 
 /*** If there is not enough cards to draw, it shuffles discard pile and puts it at the bottom of
  * draw pile. Then player draws. ***/
-public class ShuffleFirst implements DrawAndShuffleStrategy {
+public class ShuffleFirst implements IDrawAndShuffleStrategy {
 
     @Override
     public List<Card> drawAndDiscardUsingStrategy(List<Card> drawPile, List<Card> discardPile, List<Card> discardedCards) {

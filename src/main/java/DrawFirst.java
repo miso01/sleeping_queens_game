@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 /*** Draws only available amount of cards from drawing pile, reshuffles discard pile and then draws remaining. ***/
-public class DrawFirst implements DrawAndShuffleStrategy {
+public class DrawFirst implements IDrawAndShuffleStrategy {
 
     @Override
     public List<Card> drawAndDiscardUsingStrategy(List<Card> drawPile, List<Card> discardPile, List<Card> discardedCards) {

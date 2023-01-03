@@ -2,7 +2,7 @@ import model.GameState;
 
 import java.util.*;
 
-public class GameFinished implements GameFinishedStrategy {
+public class GameFinished implements IGameFinishedStrategy {
 
     @Override
     public int isFinished(GameState gameState) {
